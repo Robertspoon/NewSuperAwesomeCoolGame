@@ -48,8 +48,6 @@ namespace NewSuperAwesomeCoolGame
             Console.WriteLine("Score: " + score);
             Console.WriteLine("Shield: " + shield);
             Console.WriteLine("Health: " + health);
-            Console.WriteLine("Experience points: " + exp);
-            Console.WriteLine("Lives: " + lives);
 
             if ((health == 100) && (health >=76))
             {
@@ -72,8 +70,9 @@ namespace NewSuperAwesomeCoolGame
                 status = "DEAD";
             }
 
-
-
+            Console.WriteLine("Health Status: " + status);
+            Console.WriteLine("Experience points: " + exp);
+            Console.WriteLine("Lives: " + lives);
 
 
             Console.WriteLine("<------------->");
@@ -99,6 +98,10 @@ namespace NewSuperAwesomeCoolGame
             {
                 exp = 0;
             }
+        }
+        static void Heal(int heal)
+        {
+
         }
     }
 }
