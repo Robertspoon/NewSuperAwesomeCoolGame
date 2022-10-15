@@ -14,6 +14,7 @@ namespace NewSuperAwesomeCoolGame
         static int score;
         static int exp;
         static int level;
+        static int weapon;
 
         static void Main(string[] args)
         {
@@ -23,6 +24,7 @@ namespace NewSuperAwesomeCoolGame
             score = 0;
             exp = 0;
             level = 1;
+            weapon = 0;
 
            
            
@@ -102,6 +104,21 @@ namespace NewSuperAwesomeCoolGame
         static void Heal(int heal)
         {
 
+        }
+        static void Death()
+        {
+            if (health ==0)
+            {
+                Console.WriteLine("YOU DIED");
+            }
+        }
+        static void GameOver()
+        {
+            if (lives == 0)
+            {
+                Console.WriteLine("GAME OVER");
+                Console.WriteLine("Final score: " + score);
+            }
         }
     }
 }
