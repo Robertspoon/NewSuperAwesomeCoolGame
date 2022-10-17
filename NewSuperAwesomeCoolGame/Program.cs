@@ -36,6 +36,8 @@ namespace NewSuperAwesomeCoolGame
             Console.ReadKey(true);
             Console.WriteLine();
             ShowHUD();
+            TakeDamage(200);
+            ShowHUD();
 
             Console.ReadKey(true);
             
@@ -44,6 +46,9 @@ namespace NewSuperAwesomeCoolGame
         {
             string status;
             status = "";
+            string weaponName;
+            weaponName = "";
+           
 
             Console.WriteLine("<------------->");
             Console.WriteLine("Level: " + level);
@@ -72,7 +77,29 @@ namespace NewSuperAwesomeCoolGame
                 status = "DEAD";
             }
 
+            if (weapon == 1)
+            {
+                weaponName = "Pistol";
+            }
+            else if (weapon ==2)
+            {
+                weaponName = "ShotGun";
+            }
+            else if (weapon ==3)
+            {
+                weaponName = "Flail";
+            }
+            else if (weapon ==4)
+            {
+                weaponName = "Proton Collider";
+            }
+            else
+            {
+                weaponName = "Sword";
+            }
+
             Console.WriteLine("Health Status: " + status);
+            Console.WriteLine("Current Weapon: " + weaponName);
             Console.WriteLine("Experience points: " + exp);
             Console.WriteLine("Lives: " + lives);
 
@@ -81,35 +108,51 @@ namespace NewSuperAwesomeCoolGame
         }
         static void TakeDamage(int damage)
         {
+            Console.WriteLine("You are about to take" + damage );
             shield = shield - damage;
-            if (shield < 0)
+            if (shield <0)
             {
+                health += shield;
                 shield = 0;
             }
-            if (health < 0)
-            {
-                health = 0;
-            }
+
             
 
         }
         static void GainExp(int gainEXP)
         {
             exp = exp + gainEXP;
-            if (exp >= 200)
+            if (exp >= 500)
             {
                 exp = 0;
+                level = level + 1;
             }
         }
         static void Heal(int heal)
         {
+            health = health + heal;
+            if (health >100)
+            {
+                health = 100;
+            }
+
+        }
+        static void RegenerateShield(int regenShield)
+        {
+            shield = shield + regenShield;
+            if(shield >100)
+            {
+                shield = 100;
+            }
 
         }
         static void Death()
         {
-            if (health ==0)
+            if (health <=0)
             {
                 Console.WriteLine("YOU DIED");
+                lives --;
+                GameOver();
             }
         }
         static void GameOver()
