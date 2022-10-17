@@ -36,8 +36,54 @@ namespace NewSuperAwesomeCoolGame
             Console.ReadKey(true);
             Console.WriteLine();
             ShowHUD();
-            TakeDamage(200);
+            Console.ReadKey(true);
+            Console.WriteLine("You encountered an enemy goblin!");
+            Console.WriteLine("The goblin strikes you, halving your shield");
+            TakeDamage(50);
+            Console.ReadKey(true);
             ShowHUD();
+            Console.WriteLine("You strike the goblin with your sword, killing it instantly!");
+            AddScore(50);
+            GainExp(50);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.ReadKey(true);
+            Console.WriteLine("You find a shield restoration unit, replenishing your shield!");
+            RegenerateShield(100);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.ReadKey(true);
+            Console.WriteLine("You encounter a Rock Golem!!");
+            Console.WriteLine("You try to strike it with your sword, but it has so affect!!!");
+            Console.WriteLine("The golem strikes you, depleating your shield and then some!!");
+            TakeDamage(80);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.ReadKey(true);
+            Console.WriteLine("You switch to your flail and strike the golem, dealing a decent blow on it!");
+            SwitchWeapon(3);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.ReadKey(true);
+            Console.WriteLine("The golem is still standing though, and strikes you again!");
+            TakeDamage(80);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.WriteLine("With a valiant swing of your flail, you hit the rock golem, destroying it!!");
+            AddScore(200);
+            GainExp(300);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.ReadKey(true);
+            Console.WriteLine("You find a healing unit, restoring your H.P. to full!");
+            Heal(150);
+            Console.ReadKey(true);
+            ShowHUD();
+            Console.ReadKey(true);
+
+
+
+
 
             Console.ReadKey(true);
             
@@ -56,7 +102,7 @@ namespace NewSuperAwesomeCoolGame
             Console.WriteLine("Shield: " + shield);
             Console.WriteLine("Health: " + health);
 
-            if ((health == 100) && (health >=76))
+            if ((health <= 100) && (health >=76))
             {
                 status = "FINE AND DANDY";
             }
@@ -108,15 +154,20 @@ namespace NewSuperAwesomeCoolGame
         }
         static void TakeDamage(int damage)
         {
-            Console.WriteLine("You are about to take" + damage );
+            Console.WriteLine("You are about to take " + damage + " damage");
             shield = shield - damage;
             if (shield <0)
             {
                 health += shield;
                 shield = 0;
             }
+            if (health <= 0)
+            {
+                Console.WriteLine("YOU DIED");
+                lives--;
+                GameOver();
+            }
 
-            
 
         }
         static void GainExp(int gainEXP)
@@ -124,7 +175,8 @@ namespace NewSuperAwesomeCoolGame
             exp = exp + gainEXP;
             if (exp >= 500)
             {
-                exp = 0;
+
+                exp -= 500;
                 level = level + 1;
             }
         }
@@ -135,6 +187,8 @@ namespace NewSuperAwesomeCoolGame
             {
                 health = 100;
             }
+           
+
 
         }
         static void RegenerateShield(int regenShield)
@@ -144,6 +198,7 @@ namespace NewSuperAwesomeCoolGame
             {
                 shield = 100;
             }
+            
 
         }
         static void Death()
@@ -162,6 +217,24 @@ namespace NewSuperAwesomeCoolGame
                 Console.WriteLine("GAME OVER");
                 Console.WriteLine("Final score: " + score);
             }
+        }
+        static void Reset()
+        {
+            health = 100;
+            shield = 100;
+            lives = 3;
+            exp = 0;
+            level = 1;
+            score = 0;
+            weapon = 0;
+        }
+        static void AddScore(int upScore)
+        {
+            score = score + upScore;
+        }
+        static void SwitchWeapon(int changeWeapon)
+        {
+            weapon = changeWeapon;
         }
     }
 }
