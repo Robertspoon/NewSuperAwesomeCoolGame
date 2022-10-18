@@ -37,49 +37,127 @@ namespace NewSuperAwesomeCoolGame
             Console.WriteLine();
             ShowHUD();
             Console.ReadKey(true);
+            Console.WriteLine();
             Console.WriteLine("You encountered an enemy goblin!");
             Console.WriteLine("The goblin strikes you, halving your shield");
             TakeDamage(50);
             Console.ReadKey(true);
+            Console.WriteLine();
             ShowHUD();
+            Console.WriteLine();
             Console.WriteLine("You strike the goblin with your sword, killing it instantly!");
             AddScore(50);
             GainExp(50);
             Console.ReadKey(true);
+            Console.WriteLine();
             ShowHUD();
             Console.ReadKey(true);
+            Console.WriteLine();
             Console.WriteLine("You find a shield restoration unit, replenishing your shield!");
             RegenerateShield(100);
             Console.ReadKey(true);
+            Console.WriteLine();
             ShowHUD();
             Console.ReadKey(true);
+            Console.WriteLine();
             Console.WriteLine("You encounter a Rock Golem!!");
             Console.WriteLine("You try to strike it with your sword, but it has so affect!!!");
+
+
+            //Showcases TakeDamage that modifies health and shield
+
             Console.WriteLine("The golem strikes you, depleating your shield and then some!!");
             TakeDamage(80);
+
+
             Console.ReadKey(true);
+            Console.WriteLine();
             ShowHUD();
             Console.ReadKey(true);
+            Console.WriteLine();
             Console.WriteLine("You switch to your flail and strike the golem, dealing a decent blow on it!");
             SwitchWeapon(3);
             Console.ReadKey(true);
+            Console.WriteLine();
             ShowHUD();
             Console.ReadKey(true);
+            Console.WriteLine();
             Console.WriteLine("The golem is still standing though, and strikes you again!");
             TakeDamage(80);
             Console.ReadKey(true);
+            Console.WriteLine();
             ShowHUD();
+            Console.WriteLine();
             Console.WriteLine("With a valiant swing of your flail, you hit the rock golem, destroying it!!");
-            AddScore(200);
-            GainExp(300);
+            AddScore(300);
+
+            //Showcases leveling up
+            GainExp(500);
+            Console.ReadKey(true);
+            Console.WriteLine();
+            Console.WriteLine("You leveled up!");
+            ShowHUD();
+
+
+            Console.ReadKey(true);
+            Console.WriteLine();
+
+
+            //Showcases a 1up that restores health and shield to full, and adds a life
+            Console.WriteLine("You found a 1UP, fully healing your health and shield!!");
+            OneUP();
+            Console.ReadKey(true);
+            Console.WriteLine();
+            ShowHUD();
+
+
+            Console.ReadKey(true);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("You encounter a Goliath!!");
+            Console.WriteLine("You try to strike it with your flail, but it has little to no affect on him!");
+
+            //Showcases TakeDamage that modifies health and shield
+
+
+            Console.WriteLine("The Goliath goes for a mighty strike, instantly breaking your shield and damaging your health!!!!");
+            TakeDamage(125);
+
+
+            Console.ReadKey(true);
+            Console.WriteLine();
+            ShowHUD();
+            Console.WriteLine();
+            Console.WriteLine("You switch to your shotgun and try shooting the Goliath but it again has little affect on the giant!!");
+
+            //Showcases TakeDamage modifying health and lives
+
+
+            Console.WriteLine("The Goliath goes in for another mighty strike, flattening you to the ground!!");
+            TakeDamage(125);
+
+
+            Console.WriteLine();
             Console.ReadKey(true);
             ShowHUD();
-            Console.ReadKey(true);
-            Console.WriteLine("You find a healing unit, restoring your H.P. to full!");
-            Heal(150);
-            Console.ReadKey(true);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            Console.WriteLine("Mechanics not showcased aboved");
+            Console.WriteLine();
+            Console.WriteLine("TakeDamage that modifies shield, health and lives");
+            Console.WriteLine();
+            Reset();
             ShowHUD();
-            Console.ReadKey(true);
+            TakeDamage(250);
+            ShowHUD();
+            Console.WriteLine();
+            Console.WriteLine("");
+
+
+
 
 
 
@@ -163,6 +241,7 @@ namespace NewSuperAwesomeCoolGame
             }
             if (health <= 0)
             {
+                health = 0;
                 Console.WriteLine("YOU DIED");
                 lives--;
                 GameOver();
@@ -228,6 +307,7 @@ namespace NewSuperAwesomeCoolGame
             score = 0;
             weapon = 0;
         }
+
         static void AddScore(int upScore)
         {
             score = score + upScore;
@@ -236,5 +316,12 @@ namespace NewSuperAwesomeCoolGame
         {
             weapon = changeWeapon;
         }
+        static void OneUP()
+        {
+            health = 100;
+            shield = 100;
+            lives = lives + 1;
+        }
+
     }
 }
