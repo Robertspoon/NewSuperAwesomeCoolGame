@@ -76,7 +76,7 @@ namespace NewSuperAwesomeCoolGame
 
             //Showcases TakeDamage that modifies health and shield
             Console.WriteLine("The golem strikes you, depleating your shield and then some!!");
-            TakeDamage(80);
+            TakeDamage(105);
 
 
             Console.ReadKey(true);
