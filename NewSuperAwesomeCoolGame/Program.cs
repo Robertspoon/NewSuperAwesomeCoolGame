@@ -38,12 +38,17 @@ namespace NewSuperAwesomeCoolGame
             ShowHUD();
             Console.ReadKey(true);
             Console.WriteLine();
+
+
+            //showcases TakeDamage modifying shield
             Console.WriteLine("You encountered an enemy goblin!");
             Console.WriteLine("The goblin strikes you, halving your shield");
             TakeDamage(50);
             Console.ReadKey(true);
             Console.WriteLine();
             ShowHUD();
+
+
             Console.WriteLine();
             Console.WriteLine("You strike the goblin with your sword, killing it instantly!");
             AddScore(50);
@@ -53,11 +58,16 @@ namespace NewSuperAwesomeCoolGame
             ShowHUD();
             Console.ReadKey(true);
             Console.WriteLine();
+
+
+            //showcases regening shield 
             Console.WriteLine("You find a shield restoration unit, replenishing your shield!");
             RegenerateShield(100);
             Console.ReadKey(true);
             Console.WriteLine();
             ShowHUD();
+
+
             Console.ReadKey(true);
             Console.WriteLine();
             Console.WriteLine("You encounter a Rock Golem!!");
@@ -65,7 +75,6 @@ namespace NewSuperAwesomeCoolGame
 
 
             //Showcases TakeDamage that modifies health and shield
-
             Console.WriteLine("The golem strikes you, depleating your shield and then some!!");
             TakeDamage(80);
 
@@ -75,11 +84,16 @@ namespace NewSuperAwesomeCoolGame
             ShowHUD();
             Console.ReadKey(true);
             Console.WriteLine();
+
+
+            //showcases SwitchWeapon changing the current weapon
             Console.WriteLine("You switch to your flail and strike the golem, dealing a decent blow on it!");
             SwitchWeapon(3);
             Console.ReadKey(true);
             Console.WriteLine();
             ShowHUD();
+
+
             Console.ReadKey(true);
             Console.WriteLine();
             Console.WriteLine("The golem is still standing though, and strikes you again!");
@@ -90,6 +104,7 @@ namespace NewSuperAwesomeCoolGame
             Console.WriteLine();
             Console.WriteLine("With a valiant swing of your flail, you hit the rock golem, destroying it!!");
             AddScore(300);
+
 
             //Showcases leveling up
             GainExp(500);
@@ -117,9 +132,8 @@ namespace NewSuperAwesomeCoolGame
             Console.WriteLine("You encounter a Goliath!!");
             Console.WriteLine("You try to strike it with your flail, but it has little to no affect on him!");
 
+
             //Showcases TakeDamage that modifies health and shield
-
-
             Console.WriteLine("The Goliath goes for a mighty strike, instantly breaking your shield and damaging your health!!!!");
             TakeDamage(125);
 
@@ -130,9 +144,8 @@ namespace NewSuperAwesomeCoolGame
             Console.WriteLine();
             Console.WriteLine("You switch to your shotgun and try shooting the Goliath but it again has little affect on the giant!!");
 
+
             //Showcases TakeDamage modifying health and lives
-
-
             Console.WriteLine("The Goliath goes in for another mighty strike, flattening you to the ground!!");
             TakeDamage(125);
 
@@ -154,7 +167,33 @@ namespace NewSuperAwesomeCoolGame
             TakeDamage(250);
             ShowHUD();
             Console.WriteLine();
-            Console.WriteLine("");
+            Console.ReadKey(true);
+            Console.WriteLine("Heal modifying health");
+            Console.WriteLine();
+            Reset();
+            ShowHUD();
+            TakeDamage(150);
+            ShowHUD();
+            Heal(100);
+            ShowHUD();
+            Console.ReadKey(true);
+            Console.WriteLine();
+            Console.WriteLine("Game Over");
+            Console.WriteLine();
+            Reset();
+            ShowHUD();
+            TakeDamage(250);
+            ShowHUD();
+            LifeReset();
+            ShowHUD();
+            TakeDamage(250);
+            ShowHUD();
+            Console.WriteLine();
+            Console.ReadKey(true);
+            
+            
+
+
 
 
 
@@ -280,21 +319,13 @@ namespace NewSuperAwesomeCoolGame
             
 
         }
-        static void Death()
-        {
-            if (health <=0)
-            {
-                Console.WriteLine("YOU DIED");
-                lives --;
-                GameOver();
-            }
-        }
+        
         static void GameOver()
         {
             if (lives == 0)
             {
                 Console.WriteLine("GAME OVER");
-                Console.WriteLine("Final score: " + score);
+              
             }
         }
         static void Reset()
@@ -321,6 +352,16 @@ namespace NewSuperAwesomeCoolGame
             health = 100;
             shield = 100;
             lives = lives + 1;
+        }
+        static void LifeReset()
+        {
+            health = 100;
+            shield = 100;
+            lives = lives - 1;
+            exp = 0;
+            level = 1;
+            score = 0;
+            weapon = 0;
         }
 
     }
